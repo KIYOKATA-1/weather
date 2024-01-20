@@ -1,0 +1,170 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: black;
+  }
+  
+  .container {
+    text-align: center;
+    width: 390px;
+    border-radius: clamp(20px, 10%, 45px);
+    background: url('/public/img/weather_app_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: clamp(30vh, 60vh, 80vh);
+    margin: auto;
+    border: 1px solid white;
+  }
+
+  .status_bar{
+    position: absolute;
+    height: 47px;
+    width: 390px;
+    border-radius: 43px 43px 0 0;
+    justify-content: center;
+    align-items: center;
+}
+.status_bar .img1{
+    position: absolute;
+    right: 26.6px;
+    top: 17px;
+}
+
+.status_bar .clock{
+    position: absolute;
+    left: 26.6px;
+    top: 14px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: white;
+}
+  
+  form {
+    position: relative;
+    transform: translate(-50%, -50%);
+    left: 45%;
+    top: 80.5%; 
+    background: transparent !important;
+    width: clamp(200px, 40%, 560px);
+    height: clamp(100px, 19.5%, 290px);
+    border-radius: 0 0 45px 45px;
+  }
+
+  form input {
+    width: clamp(250px, 60%, 360px);
+    height: 50px;
+    outline: none;
+    background: transparent;
+    color: white;
+    border: none;
+    caret-color: white;
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+    border-bottom: 2px solid white;
+  }
+  form input:-webkit-autofill, form input.filled{
+    -webkit-text-fill-color: white;
+    font-family: 'Exo 2', sans-serif;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    font-size: clamp(20px, 4vw, 24px);;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  form input::placeholder{
+    text-align: center;
+    color: white;
+    font-size: clamp(20px, 4vw, 24px);
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+  }
+
+  form button{
+    top: 30%;
+    width: clamp(200px, 50%, 300px);
+    height: 35px;
+    position: relative;
+    border: none;
+    left:15%;
+    text-align: center;
+    font-size: clamp(16px, 3vw, 19px);
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+  }
+  
+  .error {
+    color: red;
+  }
+  .card {
+    padding: clamp(10px, 2%, 20px);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    display: inline-block;
+    background: transparent !important;
+    position: absolute;
+    font-family: 'Roboto', sans-serif;
+    top: 42%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .city , .temperature, .weather-description{
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    letter-spacing: 0.374px;
+}
+
+.temperature{
+    font-size: clamp(28px, 5vw, 37px);
+    position: relative;
+    font-family: 'Exo 2', sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    color: white;
+}
+
+.weather-description{
+    font-size: clamp(16px, 3vw, 20px);
+    position: relative;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(146, 146, 146);
+}
+
+.city{
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    position: relative;
+    font-size: clamp(24px, 5vw, 34px);
+}
+
+.extra {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    width: 390px;
+}
+.extra-info {
+    flex: 1;
+    max-width: 400px;
+    margin-right: 15px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 5%;
+    font-size: 12px;
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    background: transparent;
+    backdrop-filter: blur(8px);
+    border-radius: 45px;
+}
