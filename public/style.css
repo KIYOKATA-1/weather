@@ -236,3 +236,8 @@ footer{
     transform: translate(-50%, 0);
 }
 
+.card #map{
+    width: 400px;
+    height: 400px;
+    position: relative;
+}

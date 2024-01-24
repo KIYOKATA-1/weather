@@ -2,12 +2,12 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const server = require('http').createServer(app);
-const transliteration = require("transliteration");
-
+const transliteration = require('transliteration');
 
 app.set("view engine", "ejs");
 
-app.use('/public', express.static(__dirname + '/public', { type: 'text/css' }));
+app.use('/public', express.static(__dirname + '/public'));
+console.log(__dirname);
 
 app.get("/", (req, res) => {
     res.render("index", { weather: null, error: null });
@@ -21,12 +21,13 @@ app.get("/weather", async (req, res) => {
   const latinCity = transliteration.transliterate(city);
 
 
-  const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${latinCity}&units=imperial&appid=${apiKey}`;
+  const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${latinCity}&units=metric&appid=${apiKey}`;
   let weather;
   let error = null;
   try {
     const response = await axios.get(APIUrl);
     weather = response.data;
+    console.log(weather.coord);
   } catch (error) {
     weather = null;
     error = "Error, Please try again";
