@@ -1,3 +1,4 @@
+'use strict';
 const express = require("express");
 const axios = require("axios");
 const app = express();
@@ -27,7 +28,14 @@ app.get("/weather", async (req, res) => {
   try {
     const response = await axios.get(APIUrl);
     weather = response.data;
+    console.log(weather);
     console.log(weather.coord);
+
+    const sunriseTimestamp = new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+    const sunsetTimestamp = new Date(weather.sys.sunset * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+    weather.sunrise = sunriseTimestamp;
+    weather.sunset = sunsetTimestamp;
   } catch (error) {
     weather = null;
     error = "Error, Please try again";

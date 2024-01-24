@@ -5,20 +5,23 @@ body {
     text-align: center;
     height: 100vh;
     margin: 0;
-    background: rgba(216, 216, 216, 0.728);
+    background: url('/public/img/total_bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-  
   .container {
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 1290px;
+    width: clamp(300px, 80%, 90%);
+    max-width: 1290px;
     border-radius: clamp(20px, 10%, 45px);
-    background: url('/public/img/weather_app_bg.png');
+    background: rgba(0, 0, 0, 0.71);
+    filter: contrast(1);
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
-    top: 70px;
+    top: 20vh;
     height: clamp(30vh, 60vh, 80vh);
     margin: auto;
     border: 1px solid white;
@@ -32,14 +35,15 @@ body {
 
   }
 
-
   .status_bar{
     position: absolute;
     height: 47px;
-    width: 390px;
+    width: clamp(300px, 80%, 90%);
+    max-width: 1290px;
     border-radius: 43px 43px 0 0;
     justify-content: center;
     align-items: center;
+    background: transparent;
 }
 .status_bar .img1{
     position: absolute;
@@ -100,8 +104,9 @@ body {
     color: white;
     font-size: clamp(20px, 4vw, 24px);
     font-family: 'Exo 2', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
   }
+  
 
   form button{
     top: 5%;
@@ -109,11 +114,20 @@ body {
     height: 35px;
     position: relative;
     border: none;
+    color: white;
+    border-radius: 20px;
     left:15%;
     text-align: center;
     font-size: clamp(16px, 3vw, 19px);
     font-family: 'Exo 2', sans-serif;
-    font-weight: 300;
+    background: rgba(56, 56, 56, 0.374);
+    font-weight: 600;
+    transition: transform 0.4s ease-in;
+  }
+  form button:hover{
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.5);
+
   }
   
   .error {
@@ -122,7 +136,7 @@ body {
   .card {
     padding: clamp(10px, 2%, 20px);
     font-size: clamp(1rem, 2vw, 1.5rem);
-    display: inline-block;
+    display: flex;
     background: transparent !important;
     position: absolute;
     font-family: 'Roboto', sans-serif;
@@ -153,15 +167,15 @@ body {
     font-family: 'Exo 2', sans-serif;
     font-weight: 400;
     font-style: italic;
-    color: rgb(146, 146, 146);
+    color: rgba(235, 235, 235, 0.885);
 }
 
 .city{
     color: white;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 700;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
     position: relative;
-    font-size: clamp(24px, 5vw, 34px);
+    font-size: clamp(39px, 20vw, 50px);
 }
 
 .extra {
@@ -183,61 +197,30 @@ body {
     color: white;
     font-family: 'Exo 2', sans-serif;
     background: transparent;
-    backdrop-filter: blur(8px);
     border-radius: 45px;
 }
 
-footer{
-    position: absolute; 
-    bottom: 0; 
-    text-align: center; 
-    width: 100%; 
-    height: 10vh;
-    background-color: transparent; 
-    color: black;
-}
-
-.author h2{
-    font-family: 'Exo 2', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-}
-
-.author{
-    text-align: center;
-    display: flex;
-    left: 36%;
-    position: absolute;
-}
-.author .social{
-    list-style: none;
-    position: relative;
-    top: 16px;
-}
-.author .social a{
-    color: black;
-    text-decoration: none;
-    outline: none;
-    font-size: 24px;
-    font-family: 'Exo 2', sans-serif;
-    font-weight: 200;
-    font-style: italic;
-}
-
 .map_card{
-    background: white;
+    background: transparent;
+    width: 385px;
+    height: 385px;
     padding: clamp(10px, 2%, 20px);
     font-size: clamp(1rem, 2vw, 1.5rem);
     display: inline-block;
     position: absolute;
     font-family: 'Roboto', sans-serif;
-    right: 20%;
-    top: 180px;
+    top: -4vh;
+    border-radius: 45px;
     transform: translate(-50%, 0);
 }
 
-.card #map{
-    width: 400px;
-    height: 400px;
-    position: relative;
+.weather_data {
+  position: absolute;
+  flex: 1;
+  padding-left: 160%;
+  top: -25px;
+  left: 26vw;
+}
+canvas{
+  border-radius: 45px;
 }

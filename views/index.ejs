@@ -7,11 +7,11 @@
     <title>Weather App</title>
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://api-maps.yandex.ru/v3/?apikey=e9a62e84-e616-458a-944d-3640a27c341d&lang=ru_RU"></script>
+    <script src="https://api-maps.yandex.ru/v3/?apikey=e9a62e84-e616-458a-944d-3640a27c341d&lang=en_EN"></script>
     <script src="/public/js/map.js" onload="<% if (weather) { %>initMap(<%= weather.coord.lon%>, <%= weather.coord.lat%>)<% } %>"></script>
 </head>
   <body>
@@ -23,13 +23,14 @@
         
       <form action="/weather" method="get" id="weatherForm">
         <input type="text" name="city" placeholder="ENTER CITY" autocomplete="name" id="myInput"/> <br>
-        <button type="submit" id="weatherBtn">Get Weather</button>
+        <button type="submit" id="weatherBtn">GET WEATHER</button>
       </form>
       <% if (error) { %>
       <p class="error"><%= error %></p>
       <% } else if (weather) { %>
         <div class="card">
-            <div id="map" style="width: 600px; height: 400px"></div>
+            <div id="map" class="map_card"></div>
+            <div class="weather_data">
             <p class="city">
                 <%=weather.name%>
               </p>
@@ -45,6 +46,8 @@
                 <p class="extra-info"><i class="fa-solid fa-thermometer"></i> <%=weather.main.pressure%> hPa</p>
                 <p class="extra-info"><i class="fa-solid fa-wind"></i> <%=weather.wind.speed%> m/s</p>
                 <p class="extra-info"><i class="fa-solid fa-location-dot"></i> <%=weather.sys.country%></p>
+                <p class="extra-info"><i class="fa-solid fa-sun"></i> Sunrise: <%= weather.sunrise %></p>
+                <p class="extra-info"><i class="fa-solid fa-moon"></i> Sunset: <%= weather.sunset %></p>
                 <% if (weather.rain) { %>
                 <p class="extra-info"><i class="fa-solid fa-cloud-rain"></i> <%=weather.rain["1h"]%> mm (1h)</p>
                 <% } %>
@@ -53,18 +56,9 @@
                 <% } %>
             </div>
           </div>
-          <div id="map"></div>
-          
+          </div>          
       <% } %>
     </div>
-    <footer>
-        <div class="author">
-            <h2>CREATED BY KIYOKATA</h2>
-            <ul class="social">
-                <li><a href=""><i class="fa-brands fa-github"></i> GITHUB</a></li>
-            </ul>
-        </div>
-    </footer>
     <script>
         
         window.addEventListener('DOMContentLoaded', function(){
@@ -83,6 +77,7 @@
       }
     
       updateClock();
+      
       
 });
     </script>

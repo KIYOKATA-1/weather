@@ -1,3 +1,4 @@
+'use strict';
 async function initMap(lon, lat) {
     console.log(12341234)
     // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
@@ -25,3 +26,5 @@ async function initMap(lon, lat) {
     // Добавляем слой для отображения схематической карты
     map.addChild(new YMapDefaultSchemeLayer());
 }
+
+
