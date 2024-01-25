@@ -33,7 +33,9 @@ body {
   -17px 12px 17px rgba(3, 7, 18, 0.29),
   -2px 1px 2px rgba(3, 7, 18, 0.29),
   -23px 17px 23px rgba(3, 7, 18, 0.29);
-  filter: contrast(1.1);
+  filter: contrast(130%);
+  animation: fadeIn 1s ease-in-out;
+
 }
 
 .status_bar{
@@ -89,6 +91,7 @@ form input {
   font-family: 'Exo 2', sans-serif;
   text-align: center;
   border-bottom: 2px solid white;
+  font-size: clamp(20px, 4vw, 24px);
 }
 form input:-webkit-autofill, form input.filled{
   -webkit-text-fill-color: white;
@@ -96,7 +99,7 @@ form input:-webkit-autofill, form input.filled{
   color: white;
   background-color: transparent;
   text-align: center;
-  font-size: clamp(20px, 4vw, 24px);;
+  font-size: clamp(20px, 4vw, 24px);
   transition: background-color 5000s ease-in-out 0s;
 }
 
@@ -222,24 +225,22 @@ flex-direction: row;
   background: transparent;
   width: 650px;
   height: 285px;
-  padding: clamp(5px, 1%, 10px);
   font-size: clamp(1rem, 2vw, 1.5rem);
   display: inline-block;
   position: absolute;
   font-family: 'Roboto', sans-serif;
-  top: 11vh;
-  right: -15vw;
+  top: 13vh;
+  right: -13vw;
   border-radius: 45px;
   transform: translate(-50%, 0);
   transition: 0.4s ease-in-out;
+  animation: mapFade 1.2s ease-in;
 }
 .map_card:hover{
 width: 655px;
 height: 445px;
 padding: 0;
 height: 290px;
-right: -14vw;
-top: 11.8vh;
 }
 
 .weather_data {
@@ -248,9 +249,12 @@ flex: 1;
 padding-left: 160%;
 top: -10.5vh;
 right: 35vw;
+animation: fadeTwo 1.2s ease-in;
 }
 canvas{
 border-radius: 45px;
+filter:contrast(0.75) brightness(1);
+
 }
 
 
@@ -275,3 +279,31 @@ left: 39vw;
 color: white;
 }
 }
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeTwo {
+  from{
+    opacity: 0;
+    transform: translateX(-50px);
+  }to{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+ @keyframes mapFade {
+  from{ 
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+ }
