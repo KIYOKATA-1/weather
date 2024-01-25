@@ -29,7 +29,6 @@
       <p class="error"><%= error %></p>
       <% } else if (weather) { %>
         <div class="card">
-            <div id="map" class="map_card"></div>
             <div class="weather_data">
             <p class="city">
                 <%=weather.name%>
@@ -42,12 +41,14 @@
             </p>
             </p>
             <div class="extra">
-                <p class="extra-info"><i class="fa-solid fa-droplet"></i> <%=weather.main.humidity%>%</p>
-                <p class="extra-info"><i class="fa-solid fa-thermometer"></i> <%=weather.main.pressure%> hPa</p>
-                <p class="extra-info"><i class="fa-solid fa-wind"></i> <%=weather.wind.speed%> m/s</p>
+                <p class="extra-info"><i class="fa-solid fa-droplet"></i>HUMIDITY <br> <%=weather.main.humidity%>%</p>
+                <p class="extra-info"><i class="fa-solid fa-thermometer"></i>PRESSURE <br><%=weather.main.pressure%> hPa</p>
+                <p class="extra-info"><i class="fa-solid fa-wind"></i>WINDSPEED <br><%=weather.wind.speed%> m/s</p>
                 <p class="extra-info"><i class="fa-solid fa-location-dot"></i> <%=weather.sys.country%></p>
-                <p class="extra-info"><i class="fa-solid fa-sun"></i> Sunrise: <%= weather.sunrise %></p>
-                <p class="extra-info"><i class="fa-solid fa-moon"></i> Sunset: <%= weather.sunset %></p>
+                <p class="extra-info"><i class="fa-solid fa-sun"></i> SUNRISE <br> <%= weather.sunrise %></p>
+                <p class="extra-info"><i class="fa-solid fa-moon"></i> SUNSET <br> <%= weather.sunset %></p>
+                <p class="extra-info"><i class="fa-solid fa-temperature-high"></i> FEELS LIKE <br><%= Math.round(weather.main.feels_like) %>&deg;</p>
+                <p class="extra-info"><i class="fa-solid fa-temperature-high"></i> MAX TEMPERATURE <br><%= Math.round(weather.main.temp_max) %>&deg;</p>
                 <% if (weather.rain) { %>
                 <p class="extra-info"><i class="fa-solid fa-cloud-rain"></i> <%=weather.rain["1h"]%> mm (1h)</p>
                 <% } %>
@@ -56,7 +57,9 @@
                 <% } %>
             </div>
           </div>
-          </div>          
+          </div>        
+          <div id="map" class="map_card"></div>
+  
       <% } %>
     </div>
     <script>
@@ -78,6 +81,11 @@
     
       updateClock();
       
+
+      const feelsLike = response.data.main.feels_like;
+      weather.feels_like = feelsLike;
+      const maxTemperature = response.data.main.temp_max;
+      weather.temp_max = maxTemperature;
       
 });
     </script>

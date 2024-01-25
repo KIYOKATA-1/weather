@@ -36,6 +36,14 @@ app.get("/weather", async (req, res) => {
 
     weather.sunrise = sunriseTimestamp;
     weather.sunset = sunsetTimestamp;
+
+    
+    const feelsLike = response.data.main.feels_like;
+    const maxTemperature = response.data.main.temp_max;
+
+    weather.main.temp_max = maxTemperature;
+    weather.main.feels_like = feelsLike;
+    
   } catch (error) {
     weather = null;
     error = "Error, Please try again";

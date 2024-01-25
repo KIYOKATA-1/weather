@@ -5,9 +5,12 @@ body {
     text-align: center;
     height: 100vh;
     margin: 0;
-    background: url('/public/img/total_bg.png');
+    background: url('/public/img/body_bg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    filter: brightness(1.2);
+    filter: contrast(1);
+    user-select: none;
   }
   .container {
     justify-content: center;
@@ -16,7 +19,7 @@ body {
     width: clamp(300px, 80%, 90%);
     max-width: 1290px;
     border-radius: clamp(20px, 10%, 45px);
-    background: rgba(0, 0, 0, 0.71);
+    background: rgba(0, 0, 0, 0.767);
     filter: contrast(1);
     background-repeat: no-repeat;
     background-size: cover;
@@ -26,13 +29,12 @@ body {
     margin: auto;
     border: 1px solid white;
     box-shadow: -0px 0px 0px rgba(3, 7, 18, 0.29),
-                -4px 3px 4px rgba(3, 7, 18, 0.29),
-                -8px 6px 8px rgba(3, 7, 18, 0.29),
-                -12px 9px 12px rgba(3, 7, 18, 0.29),
-                -17px 12px 17px rgba(3, 7, 18, 0.29),
-                -2px 1px 2px rgba(3, 7, 18, 0.29),
-                -23px 17px 23px rgba(3, 7, 18, 0.29);
-
+    -4px 3px 4px rgba(3, 7, 18, 0.29),
+    -8px 6px 8px rgba(3, 7, 18, 0.29),
+    -12px 9px 12px rgba(3, 7, 18, 0.29),
+    -17px 12px 17px rgba(3, 7, 18, 0.29),
+    -2px 1px 2px rgba(3, 7, 18, 0.29),
+    -23px 17px 23px rgba(3, 7, 18, 0.29);
   }
 
   .status_bar{
@@ -65,7 +67,7 @@ body {
     position: relative;
     transform: translate(-50%, -50%);
     left: 45%;
-    top: 80.5%; 
+    top: 85.5%; 
     background: transparent !important;
     width: clamp(200px, 40%, 560px);
     height: clamp(100px, 19.5%, 290px);
@@ -202,25 +204,36 @@ body {
 
 .map_card{
     background: transparent;
-    width: 385px;
-    height: 385px;
-    padding: clamp(10px, 2%, 20px);
+    width: 650px;
+    height: 285px;
+    padding: clamp(5px, 1%, 10px);
     font-size: clamp(1rem, 2vw, 1.5rem);
     display: inline-block;
     position: absolute;
     font-family: 'Roboto', sans-serif;
-    top: -4vh;
+    top: 11vh;
+    right: -15vw;
     border-radius: 45px;
     transform: translate(-50%, 0);
+    transition: 0.4s ease-in-out;
+}
+.map_card:hover{
+  width: 655px;
+  padding: 0;
+  height: 290px;
+  right: -14vw;
+  top: 11.8vh;
 }
 
 .weather_data {
   position: absolute;
   flex: 1;
   padding-left: 160%;
-  top: -25px;
-  left: 26vw;
+  top: -7.5vh;
+  right: -10vw;
 }
 canvas{
   border-radius: 45px;
 }
+
+
