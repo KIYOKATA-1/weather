@@ -35,7 +35,6 @@ body {
   -23px 17px 23px rgba(3, 7, 18, 0.29);
   filter: contrast(130%);
   animation: fadeIn 1s ease-in-out;
-
 }
 
 .status_bar{
@@ -68,7 +67,7 @@ form {
   position: relative;
   transform: translate(-50%, -50%);
   left: 45%;
-  top: 85.5%; 
+  top: 89.5%; 
   background: transparent !important;
   width: clamp(200px, 40%, 560px);
   height: clamp(100px, 19.5%, 290px);
@@ -229,18 +228,11 @@ flex-direction: row;
   display: inline-block;
   position: absolute;
   font-family: 'Roboto', sans-serif;
-  top: 13vh;
+  top: 18vh;
   right: -13vw;
   border-radius: 45px;
   transform: translate(-50%, 0);
-  transition: 0.4s ease-in-out;
-  animation: mapFade 1.2s ease-in;
-}
-.map_card:hover{
-width: 655px;
-height: 445px;
-padding: 0;
-height: 290px;
+  animation: mapFade 1.5s ease-in;
 }
 
 .weather_data {
@@ -254,32 +246,69 @@ animation: fadeTwo 1.2s ease-in;
 canvas{
 border-radius: 45px;
 filter:contrast(0.75) brightness(1);
-
+}
+.air-pollution {
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  left: 34vw;
+  border: 2px solid white;
+  width: 500px;
+  height: 60px;
+  background: #111d4464;
+  border-radius: 45px;
+  top: -3vh;
+  padding-left: 20px;
+  animation: fadeOne 1.2s ease-in;
 }
 
-
-@media screen and (min-width: 1801px) and (max-width: 2560px) {
-.container{
-  height: clamp(30vh, 60vh, 80vh);
-  width: clamp(300px, 80%, 90%);
-  max-width: 2560px;
-}
-.status_bar{
-  width: clamp(300px, 80%, 90%);
-  max-width: 2560px;
-}
-.status_bar .img1 {
-  opacity: 0;
-}
-.status_bar .clock{
-display: flex;
-justify-content: center;
-font-size: 17px;
-left: 39vw;
-color: white;
-}
+.air-pollution p{
+  padding-right: 35px;
+  font-family: 'Exo', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
 }
 
+.air_img {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  border-radius: 45px;
+  backdrop-filter: blur(16px);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  animation: mapFade 0.3s ease-in;
+}
+
+.air_img .closeBtn{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 24px;
+}
+
+.air_img img{
+  position: absolute;
+  width: 800px;
+  border: 2px solid black;
+  height: 400px;
+  left: 12vw;
+  top: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @keyframes fadeIn {
   from {
@@ -290,10 +319,20 @@ color: white;
   }
 }
 
+@keyframes fadeOne{
+  from {
+    opacity: 0;
+    transform: translateY(-45px);
+  }to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeTwo {
   from{
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-45px);
   }to{
     opacity: 1;
     transform: translateX(0);

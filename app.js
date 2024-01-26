@@ -23,12 +23,19 @@ app.get("/weather", async (req, res) => {
 
 
   const APIUrl = `https://api.openweathermap.org/data/2.5/weather?q=${latinCity}&units=metric&appid=${apiKey}`;
+
+  let air;
   let weather;
   let error = null;
   try {
     const response = await axios.get(APIUrl);
+
     weather = response.data;
+    const airAPI = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${weather.coord.lat}&lon=${weather.coord.lon}&appid=${apiKey}`
+    const airPolllution = await axios.get(airAPI);
+    air = airPolllution.data;
     console.log(weather);
+    console.log(air)
     console.log(weather.coord);
 
     const sunriseTimestamp = new Date(weather.sys.sunrise * 1000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -48,7 +55,7 @@ app.get("/weather", async (req, res) => {
     weather = null;
     error = "Error, Please try again";
   }
-  res.render("index", { weather, error });
+  res.render("index", { weather, error, air});
 });
 
 

@@ -7,9 +7,8 @@
     <title>Weather App</title>
     <!-- Google Font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
-    <!--Font Awesome-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&family=Exo:wght@300&family=Play&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://api-maps.yandex.ru/v3/?apikey=e9a62e84-e616-458a-944d-3640a27c341d&lang=en_EN"></script>
     <script src="/public/js/map.js" onload="<% if (weather) { %>initMap(<%= weather.coord.lon%>, <%= weather.coord.lat%>)<% } %>"></script>
@@ -27,7 +26,7 @@
       </form>
       <% if (error) { %>
       <p class="error"><%= error %></p>
-      <% } else if (weather) { %>
+      <% } else if (weather && air) { %>
         <div class="card">
             <div class="weather_data">
             <p class="city">
@@ -57,9 +56,20 @@
                 <% } %>
             </div>
           </div>
-          </div>        
+          </div>     
+          <div class="air-pollution" title="dadad" id="airP">
+            <p class="air-data" id="airP">CO<sub>2</sub> <br> <%= air.list[0].components.no2 %></p>
+            <p class="air-data" id="airP">SO<sub>2</sub> <br> <%= air.list[0].components.so2 %></p>
+            <p class="air-data" id="airP">PM<sub>10</sub> <br> <%= air.list[0].components.pm10 %></p>
+            <p class="air-data" id="airP">PM<sub>2.5</sub> <br> <%= air.list[0].components.pm2_5 %></p>
+            <p class="air-data" id="airP">O<sub>3</sub> <br> <%= air.list[0].components.o3 %></p>
+            <p class="air-data" id="airP">CO <br> <%= air.list[0].components.co %></p>
+          </div>   
+          <div class="air_img">
+            <button class="closeBtn" id="close"><i class="fa-solid fa-xmark"></i></button>
+            <img src="/public/img/AIR.png" alt="">
+          </div>
           <div id="map" class="map_card"></div>
-  
       <% } %>
     </div>
     <script>
@@ -86,8 +96,19 @@
       weather.feels_like = feelsLike;
       const maxTemperature = response.data.main.temp_max;
       weather.temp_max = maxTemperature;
-      
 });
+
+      var airPollution = document.getElementById('airP');
+      var airImg = document.querySelector('.air_img');
+      var closeBtn = document.getElementById('close');
+
+    airPollution.addEventListener('click', function () {
+        airImg.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', function () {
+      airImg.style.display = 'none';
+    });
     </script>
     </body>
 </html>
