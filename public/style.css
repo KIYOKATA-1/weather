@@ -17,7 +17,7 @@ body {
   width: clamp(300px, 80%, 90%);
   max-width: 1290px;
   border-radius: clamp(20px, 10%, 45px);
-  background: linear-gradient(65deg,#111d44b9,#000000be);
+  background: linear-gradient(2deg,#6d88d9bf,#6d88d900,#000000eb);
   filter: contrast(1);
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,12 +26,12 @@ body {
   height: clamp(30vh, 60vh, 80vh);
   margin: auto;
   border: 1px solid black;
-  box-shadow: -0px 0px 0px rgba(3, 7, 18, 0.29),
+  box-shadow: -0px 0px 0px rgba(0, 0, 0, 0.29),
   -4px 3px 4px rgba(3, 7, 18, 0.29),
   -8px 6px 8px rgba(3, 7, 18, 0.29),
   -12px 9px 12px rgba(3, 7, 18, 0.29),
   -17px 12px 17px rgba(3, 7, 18, 0.29),
-  -2px 1px 2px rgba(3, 7, 18, 0.29),
+  -2px 1px 2px rgb(3, 7, 18),
   -23px 17px 23px rgba(3, 7, 18, 0.29);
   filter: contrast(130%);
   animation: fadeIn 1s ease-in-out;
@@ -258,7 +258,8 @@ filter:contrast(0.75) brightness(1);
   border: 2px solid white;
   width: 500px;
   height: 60px;
-  background: #111d4464;
+  background: transparent;
+  backdrop-filter: blur(8px);
   border-radius: 45px;
   top: -3vh;
   padding-left: 20px;
