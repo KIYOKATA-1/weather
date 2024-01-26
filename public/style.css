@@ -18,7 +18,6 @@ body {
   max-width: 1290px;
   border-radius: clamp(20px, 10%, 45px);
   background: linear-gradient(2deg,#6d88d9bf,#6d88d900,#000000eb);
-  filter: contrast(1);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -33,7 +32,7 @@ body {
   -17px 12px 17px rgba(3, 7, 18, 0.29),
   -2px 1px 2px rgb(3, 7, 18),
   -23px 17px 23px rgba(3, 7, 18, 0.29);
-  filter: contrast(130%);
+  filter: contrast(150%);
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -123,13 +122,12 @@ form button{
   text-align: center;
   font-size: clamp(16px, 3vw, 19px);
   font-family: 'Exo 2', sans-serif;
-  background: rgba(56, 56, 56, 0.374);
+  background: rgb(56 56 56 / 82%);
   font-weight: 600;
   transition: transform 0.4s ease-in;
 }
 form button:hover{
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0.95);
 }
 
 .error {
