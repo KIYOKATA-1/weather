@@ -14,6 +14,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 1;
   width: clamp(300px, 80%, 90%);
   max-width: 1290px;
   border-radius: clamp(20px, 10%, 45px);
